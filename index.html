@@ -1,0 +1,175 @@
+---
+layout: default
+---
+
+<!-- Start Hero -->
+<div class="hero" style="background: url('{{ site.baseurl }}/img/{{ site.hero.hero_img }}') no-repeat; background-size: cover;">
+    <div class="hero-content">
+        <div class="container-fluid">
+            <div class="hero-content-inner">
+                <h1>{{ site.hero.hero_title }}</h1>
+                <p>{{ site.hero.hero_description }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        
+        <div class="col-sm-6 col-sm-offset-6 col-md-4 col-md-offset-8 form">
+            <h3><svg class="icon icon-envelope-o"><use xlink:href="#icon-envelope-o"></use></svg>Envíanos tu consulta</h3>
+            <form action="https://getsimpleform.com/messages?form_api_token={{ site.api_token }}" method="post">
+                <div class="form-field">
+                    <input name="name" type="text" placeholder="Nombre" required>
+                </div>
+                <div class="form-field">
+                    <input name="phone" type="tel" placeholder="Teléfono" required>
+                </div>
+                <div class="form-field">
+                    <input name="email" type="email" placeholder="Email" required>
+                </div>
+                <div class="form-field">
+                    <textarea name="comments" placeholder="¿Necesitas presupuesto? ¿Quiéres realizar un pedido? ¿Tienes algún problema con tu producto?" required></textarea>
+                </div>
+                <input type="submit" class="btn btn-default" value="Enviar">
+            </form>
+        </div>
+
+    </div>
+</div>
+<!-- End Hero -->
+
+<!-- Start 3 columns -->
+<div class="three-shade-col">
+    <div class="col-sm-4">
+        <svg class="icon icon-envelope-o"><use xlink:href="#icon-envelope-o"></use></svg>
+        <h3>Contacto</h3>
+        <ul>
+            {% if site.contact.phone %}<li><strong>Teléfono:</strong> {{ site.contact.phone }}</li>{% endif %}
+            {% if site.contact.emergency %}<li><strong>Emergency:</strong> {{ site.contact.emergency }}</li>{% endif %}
+            {% if site.contact.email %}<li><strong>Email:</strong> {{ site.contact.email }}</li>{% endif %}
+        </ul>
+    </div>
+    <div class="col-sm-4">
+        <svg class="icon icon-clock-o"><use xlink:href="#icon-clock-o"></use></svg>
+        <h3>Horario</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Lunes – Viernes</td>
+                    <td>{{ site.monday_friday }}</td>
+                </tr>
+                <tr>
+                    <td>Sábado</td>
+                    <td>{{ site.saturday }}</td>
+                </tr>
+                <tr>
+                    <td>Domingo</td>
+                    <td>{{ site.sunday }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-4">
+        <svg class="icon icon-map-marker"><use xlink:href="#icon-map-marker"></use></svg>
+        <h3>Localización</h3>
+            <p>
+                {{ site.contact.address }}
+            </p>
+    </div>
+</div>
+<!-- End 3 columns -->
+
+<!-- Start About -->
+<div id="about" class="about">
+    <div class="container-fluid">
+        <h2 class="section-title">Sobre nosotros</h2>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Creamos tu cocina ideal</h3>
+                <p></p>
+
+                <div class="media">
+                    <div class="media-left">
+                        <div class="boxed-icon">
+                            <svg class="icon icon-calendar"><use xlink:href="#icon-calendar"></use></svg>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <p>Treinta años al servicio de nuestros clientes nos avalan. Desde aquella persona que busca instrumentos para su hogar hasta un hotel de cinco estrellas, pasando por restaurantes, cafeterías o comunidades de vecinos.</p>
+                    </div>
+                </div>
+
+                <div class="media">
+                    <div class="media-left">
+                        <div class="boxed-icon">
+                            <svg class="icon icon-star"><use xlink:href="#icon-star"></use></svg>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <p>Contamos con una amplia gama de productos de menaje de cocina y hostelería: acero inox, cristalería , vajilla, repostería o cafetería, tanto para el profesional como para el amante de la gastronomía.</p>
+                    </div>
+                </div>
+
+                <div class="media">
+                    <div class="media-left">
+                        <div class="boxed-icon">
+                            <svg class="icon icon-briefcase"><use xlink:href="#icon-briefcase"></use></svg>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <p>Proveemos la instalación de maquinaria y contamos con servicio técnico para reparaciones.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <img src="img/about.jpg" alt="...">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End About -->
+
+<!-- Start Treatments -->
+<div id="treatments" class="treatments">
+    <div class="container-fluid">
+        <h2 class="section-title">Productos</h2>
+
+        <div class="row">
+            {% for treatment in site.data.treatments %}
+                <div class="col-sm-6 col-md-4">
+                    <div class="icon-box">
+                        <svg class="icon {{ treatment.icon }}"><use xlink:href="#{{ treatment.icon }}"></use></svg>
+                        <h4>{{ treatment.title }}</h4>
+                        <p>{{ treatment.description }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- End Treatments -->
+
+
+<!-- Start Gallery -->
+<div id="gallery" class="gallery">
+        
+    <h2 class="section-title">Galería de muestra</h2>
+
+    {% for images in site.data.gallery %}
+        <a href="{{ site.baseurl }}/img/gallery/large/{{ images.image_large }}" class="gallery-item expandable-box image-link">
+            <div class="expandable-box-top">
+                <img src="{{ site.baseurl }}/img/gallery/thumb/{{ images.image_thumb }}" alt="{{ images.image_alt }}">
+            </div>
+            <div class="expandable-box-bottom">
+                <span><svg class="icon icon-chain"><use xlink:href="#icon-chain"></use></svg></span>
+            </div>
+        </a>
+    {% endfor %}
+
+</div>
+<!-- End Gallery -->
+
+<!-- Start Map -->
+<div id="location" class="map" data-zoom="{{ site.map.zoom }}" data-address="{{ site.map.address }}" data-address-details="<img src='{{ site.map.address_details }}'>"></div>
+<!-- End Map -->

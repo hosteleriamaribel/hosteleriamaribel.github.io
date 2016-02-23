@@ -1,0 +1,15 @@
+- image_thumb: cuberteria.jpg
+  image_large: cuberteria.jpg
+  image_alt: something meaningful
+
+- image_thumb: bateria.jpg
+  image_large: bateria.jpg
+  image_alt: something meaningful
+
+- image_thumb: licuadora-lacor.jpg
+  image_large: licuadora-lacor.jpg
+  image_alt: something meaningful
+
+- image_thumb: freidora.jpg
+  image_large: freidora.jpg
+  image_alt: something meaningful
